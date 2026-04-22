@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apollo — Spec-Driven Development Team for Kiro</title>
-  <meta name="description" content="Seven AI agents. Structured handoffs. Ship features from idea to production with calm orchestration and disciplined quality gates.">
+  <title>Totara — Spec-Driven Development Team for Kiro &amp; Claude Code</title>
+  <meta name="description" content="Seven AI agents. Structured handoffs. Take features from idea to production with deep-rooted process and disciplined quality gates.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
       --text: #1a1a1a;
       --text-secondary: #4a4a4a;
       --text-muted: #7a7a7a;
-      --accent: #1a1a1a;
-      --accent-hover: #333333;
+      --accent: #2d5a3d;
+      --accent-hover: #1e4a2e;
       --border: #d4cfc5;
       --border-light: #e5e0d6;
       --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
@@ -36,6 +36,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a { color: var(--text); text-decoration: none; }
@@ -93,26 +94,27 @@
       position: relative;
       min-height: 100vh;
       display: flex; align-items: center;
-      overflow: hidden;
+      overflow: visible;
       padding: 120px 0 80px;
     }
-    .hero-moon {
+    .hero-tree {
       position: absolute;
-      bottom: -15%; left: -10%;
-      width: 55%;
-      max-width: 700px;
+      bottom: -20%; left: -60vw;
+      width: 90vw;
+      max-width: none;
       pointer-events: none;
       opacity: 0.9;
     }
-    .hero-moon img {
+    .hero-tree img {
       width: 100%; height: auto;
       display: block;
-      filter: grayscale(20%);
+      filter: grayscale(5%);
     }
     .hero-content {
       position: relative; z-index: 1;
       margin-left: 35%;
-      max-width: 900px;
+      width: 60%;
+      max-width: none;
     }
     .hero-eyebrow {
       font-family: var(--font-mono);
@@ -344,7 +346,7 @@
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
       .agent-grid, .feature-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-content { margin-left: 30%; }
+      .hero-content { margin-left: 25%; width: 70%; }
     }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
@@ -352,7 +354,7 @@
         flex-direction: column; align-items: flex-start;
         min-height: auto; padding: 60px 0 40px;
       }
-      .hero-moon {
+      .hero-tree {
         position: relative; bottom: auto; left: auto;
         width: 80%; max-width: 400px;
         margin: 0 auto 40px;
@@ -414,15 +416,15 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-moon" aria-hidden="true">
-      <img src="public/FullMoon.png" alt="" width="700" height="700">
+      <img src="public/united-states-woodcut-artist-printmaking-tree-tree-rings-462d3eca1c341647d9d6c96af991f67c.png" alt="" width="700" height="700">
     </div>
     <div class="container">
       <div class="hero-content">
-        <div class="hero-eyebrow">Ship software</div>
-        <h1>Like a mission<br>to the moon</h1>
-        <p class="hero-desc">Seven AI agents. Structured handoffs. Quality gates at every phase. Apollo turns Kiro into a full development team that takes features from rough idea to production.</p>
+        <div class="hero-eyebrow">Build to last</div>
+        <h1>Rooted in craft,<br>built to endure</h1>
+        <p class="hero-desc">Seven AI agents. Structured handoffs. Quality gates at every phase. Totara turns your AI coding assistant into a full development team — deep-rooted process, durable output, software that stands for generations.</p>
         <div class="hero-actions">
-          <a href="#install" class="btn btn-primary">Get Apollo</a>
+          <a href="#install" class="btn btn-primary">Get Totara</a>
           <a href="https://github.com/nicholasgriffintn/power-apollo" class="btn btn-secondary">View on GitHub</a>
         </div>
       </div>
@@ -434,7 +436,7 @@
     <div class="container">
       <div class="section-header-center">
         <h2 class="section-title">The Pipeline</h2>
-        <p class="section-subtitle">Every feature flows through a structured pipeline with fitness gates at each handoff.</p>
+        <p class="section-subtitle">Every feature grows through a structured pipeline with quality gates at each handoff.</p>
       </div>
       <ol class="pipeline-steps">
         <li class="pipeline-step">
@@ -500,7 +502,7 @@
     <div class="container">
       <div class="section-header-center">
         <h2 class="section-title">What You Get</h2>
-        <p class="section-subtitle">The workflows and guardrails that keep your team shipping clean.</p>
+        <p class="section-subtitle">The workflows and guardrails that keep your team building clean.</p>
       </div>
       <div class="feature-grid">
         <div class="feature-item">
@@ -664,7 +666,7 @@
             <div class="step-num">3</div>
             <div class="step-content">
               <h3>Start building</h3>
-              <p>Mention keywords like "requirements," "design," or "triage" and Apollo activates. Or invoke agents directly with @Marty, @Dieter, @Margaret, etc.</p>
+              <p>Mention keywords like "requirements," "design," or "triage" and Totara activates. Or invoke agents directly with @Marty, @Dieter, @Margaret, etc.</p>
             </div>
           </div>
         </div>
@@ -706,9 +708,9 @@
   <!-- CTA -->
   <section class="cta section-border">
     <div class="container">
-      <h2 class="section-title">Ready for liftoff?</h2>
+      <h2 class="section-title">Ready to plant roots?</h2>
       <p>Works with Kiro and Claude Code. Same team, same quality.</p>
-      <a href="https://github.com/nickharre/totara" class="btn btn-primary">Get Apollo on GitHub</a>
+      <a href="https://github.com/nickharre/totara" class="btn btn-primary">Get Totara on GitHub</a>
     </div>
   </section>
 
@@ -716,7 +718,7 @@
 
   <footer>
     <div class="container">
-      <p>Apollo — open source, free to use, built for teams who ship. Available as a <a href="https://kiro.dev/docs/powers/">Kiro Power</a> and for <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>.</p>
+      <p>Totara — open source, free to use, built for teams who craft. Available as a <a href="https://kiro.dev/docs/powers/">Kiro Power</a> and for <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>.</p>
     </div>
   </footer>
 
