@@ -101,5 +101,6 @@ Add a hook to run the Talent Manager's capability audit before implementation st
 - Starting a new feature → `workflow-feature-lifecycle.md`
 - Triaging a bug or issue → `workflow-triage.md`
 - Reviewing a handoff deliverable → `workflow-handoff-gates.md`
+- Running a 1:1 review with an agent → `workflow-agent-one-on-one.md`
 - Onboarding a new team member → `guide-team-overview.md`
 - Running a periodic audit → `guide-periodic-review.md`
