@@ -1,8 +1,8 @@
-# Apollo for Claude Code
+# Totara for Claude Code
 
 A structured multi-agent development team that runs inside [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Seven specialized roles collaborate through handoffs, quality gates, and living documentation to ship features from idea to production.
 
-This is a port of the [Apollo Kiro Power](../power-apollo/) adapted for Claude Code's conventions: `CLAUDE.md`, slash commands, and prompt-based role switching.
+This is a port of the [Totara Kiro Power](../power-apollo/) adapted for Claude Code's conventions: `CLAUDE.md`, slash commands, and prompt-based role switching.
 
 ## The Team
 

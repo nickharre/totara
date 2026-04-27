@@ -1,13 +1,13 @@
 ---
-name: "apollo"
-displayName: "Apollo — Spec-Driven Development Team"
+name: "totara"
+displayName: "Totara — Spec-Driven Development Team"
 description: "A multi-agent team for spec-driven software development. Seven specialized agents (PM, Designer, Developer, DevOps, Tester, Delivery Lead, Talent Manager) collaborate through structured handoffs, fitness gates, and living documentation to ship features from idea to production."
-keywords: ["team", "agents", "spec-driven", "requirements", "design", "delivery", "handoff", "product-manager", "designer", "developer", "devops", "tester", "qa", "talent", "tech-debt", "living-spec", "routing", "triage", "apollo"]
+keywords: ["team", "agents", "spec-driven", "requirements", "design", "delivery", "handoff", "product-manager", "designer", "developer", "devops", "tester", "qa", "talent", "tech-debt", "living-spec", "routing", "triage", "totara"]
 ---
 
-# Apollo — Spec-Driven Development Team
+# Totara — Spec-Driven Development Team
 
-A complete multi-agent team that turns rough ideas into shipped, tested, documented software through structured handoffs and quality gates. Named after the Apollo program — because shipping great software, like landing on the moon, takes a team of specialists working in concert with calm orchestration and disciplined handoffs.
+A complete multi-agent team that turns rough ideas into shipped, tested, documented software through structured handoffs and quality gates. Named after the Tōtara tree — a native New Zealand podocarp that lives over 1,000 years. Like the Tōtara, software built with this team is rooted in craft, built to endure.
 
 ## What this power provides
 
@@ -91,7 +91,7 @@ Add a hook to run the Talent Manager's capability audit before implementation st
   },
   "then": {
     "type": "askAgent",
-    "prompt": "@Peter Run a Mode A capability audit on this feature's specs. Check requirements.md, design.md, and tasks.md for any technologies, patterns, or regulations the team isn't equipped for."
+    "prompt": "Run a Mode A capability audit on this feature's specs. Check requirements.md, design.md, and tasks.md for any technologies, patterns, or regulations the team isn't equipped for."
   }
 }
 ```

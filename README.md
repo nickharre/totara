@@ -1,12 +1,12 @@
-# Apollo — Spec-Driven Development Team
+# Totara — Spec-Driven Development Team
 
-Seven AI agents. Structured handoffs. Quality gates at every phase. Apollo turns your AI coding assistant into a full development team that takes features from rough idea to production.
+Seven AI agents. Structured handoffs. Quality gates at every phase. Totara turns your AI coding assistant into a full development team that takes features from rough idea to production.
 
 **[Website](https://nickharre.github.io/totara/)** · **[GitHub](https://github.com/nickharre/totara)**
 
-## What is Apollo?
+## What is Totara?
 
-Apollo is a multi-agent team system for spec-driven software development. It provides seven specialized agents — Product Manager, UI/UX Designer, Fullstack Developer, DevOps Engineer, Tester, Delivery Lead, and Talent Manager — that collaborate through structured handoffs, fitness gates, and living documentation.
+Totara is a multi-agent team system for spec-driven software development. It provides seven specialized agents — Product Manager, UI/UX Designer, Fullstack Developer, DevOps Engineer, Tester, Delivery Lead, and Talent Manager — that collaborate through structured handoffs, fitness gates, and living documentation.
 
 ## Available for
 
@@ -16,7 +16,7 @@ Install as a [Kiro Power](https://kiro.dev/docs/powers/):
 
 1. Open Kiro → Powers panel → "Add power from GitHub"
 2. Paste: `https://github.com/nickharre/totara`
-3. Apollo activates when you mention keywords like "requirements," "design," or "triage"
+3. Totara activates when you mention keywords like "requirements," "design," or "triage"
 
 The Kiro version lives in [`power-apollo/`](./power-apollo/).
 
