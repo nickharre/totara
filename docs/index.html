@@ -96,6 +96,10 @@
       display: flex; align-items: center;
       overflow: visible;
       padding: 120px 0 80px;
+      background-image: url('public/Tree%20Rings.svg');
+      background-repeat: no-repeat;
+      background-position: left -20vw bottom -10vh;
+      background-size: 55vw auto;
     }
     .hero-tree {
       position: absolute;
@@ -353,14 +357,10 @@
       .hero {
         flex-direction: column; align-items: flex-start;
         min-height: auto; padding: 60px 0 40px;
+        background-position: center top;
+        background-size: 90vw auto;
       }
-      .hero-tree {
-        position: relative; bottom: auto; left: auto;
-        width: 80%; max-width: 400px;
-        margin: 0 auto 40px;
-        opacity: 0.85;
-      }
-      .hero-content { margin-left: 0; max-width: 100%; }
+      .hero-content { margin-left: 0; width: 100%; max-width: 100%; }
       .pipeline-steps {
         flex-direction: column; align-items: stretch; gap: 20px;
       }
@@ -415,9 +415,6 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-moon" aria-hidden="true">
-      <img src="public/united-states-woodcut-artist-printmaking-tree-tree-rings-462d3eca1c341647d9d6c96af991f67c.png" alt="" width="600" height="600">
-    </div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-eyebrow">Build to last</div>
