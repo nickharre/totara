@@ -1,7 +1,7 @@
 ---
 name: "totara"
 displayName: "Totara — Spec-Driven Development Team"
-description: "Seven AI agents collaborate through structured handoffs, quality gates, and living documentation to take features from idea to production. Includes PM, Designer, Developer, DevOps, Tester, Delivery Lead, and Talent Manager."
+description: "Seven AI agents with structured handoffs and quality gates to take features from idea to production"
 keywords: ["team", "agents", "spec-driven", "requirements", "design", "delivery", "handoff", "product-manager", "designer", "developer", "devops", "tester", "qa", "talent", "tech-debt", "living-spec", "routing", "triage", "totara"]
 author: "Nick Harre"
 ---
