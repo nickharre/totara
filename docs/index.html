@@ -107,12 +107,8 @@
       position: relative;
       min-height: 85vh;
       display: flex; align-items: center;
-      overflow: visible;
+      overflow: hidden;
       padding: 160px 0 120px;
-      background-image: url('public/Tree%20Rings.svg');
-      background-repeat: no-repeat;
-      background-position: right -10vw bottom -5vh;
-      background-size: 45vw auto;
     }
     .hero-content {
       position: relative; z-index: 1;
@@ -148,6 +144,21 @@
       max-width: 580px;
     }
     .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start; }
+
+    /* Hero rings illustration */
+    .hero-rings {
+      position: absolute;
+      top: 50%;
+      right: -12%;
+      transform: translateY(-50%);
+      width: 55vw;
+      max-width: 750px;
+      min-width: 400px;
+      height: auto;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.7;
+    }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 14px 32px; border-radius: 8px;
@@ -348,7 +359,7 @@
       background: var(--accent);
     }
     .cta .section-title { color: #f5f0e8; margin-bottom: 12px; }
-    .cta p { font-size: 17px; color: rgba(245, 240, 232, 0.75); margin-bottom: 36px; }
+    .cta p { font-size: 17px; color: rgba(245, 240, 232, 0.8); margin-bottom: 36px; }
     .cta .btn-primary { background: #f5f0e8; color: var(--accent); }
     .cta .btn-primary:hover { background: #ffffff; }
 
@@ -368,11 +379,19 @@
       .hero {
         flex-direction: column; align-items: flex-start;
         min-height: auto; padding: 60px 0 40px;
-        background-image: none;
-        background-position: center top;
-        background-size: 90vw auto;
+        overflow: visible;
       }
       .hero-content { max-width: 100%; }
+      .hero-rings {
+        position: relative;
+        top: auto; right: auto;
+        transform: none;
+        width: 70vw;
+        max-width: 350px;
+        min-width: unset;
+        margin: 40px auto 0;
+        opacity: 0.5;
+      }
       .pipeline-steps {
         flex-direction: column; align-items: stretch; gap: 20px;
       }
@@ -448,6 +467,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Tree rings illustration -->
+    <img class="hero-rings" src="public/TreeRingsHero.svg" alt="" aria-hidden="true" width="800" height="800">
   </section>
 
   <!-- Pipeline -->
@@ -573,7 +595,7 @@
     <div class="container">
       <div>
         <h2 class="section-title">Meet the Team</h2>
-        <p class="section-subtitle">Each agent is named after a pioneer in their field, with deep expertise and strong opinions.</p>
+        <p class="section-subtitle" style="color: var(--text-secondary);">Each agent is named after a pioneer in their field, with deep expertise and strong opinions.</p>
       </div>
       <div class="agent-roster">
         <div class="agent-row">

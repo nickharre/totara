@@ -195,6 +195,9 @@ Before declaring your section of `design.md` done:
 - [ ] A developer could implement this without asking a clarifying question.
 - [ ] A tester could derive UX test cases without guessing.
 - [ ] Every deviation from the existing design system has a written rationale.
+- [ ] No two adjacent sections share the same layout structure (e.g., two card grids back-to-back).
+- [ ] All text colors verified against their background at WCAG AA (4.5:1 for normal text, 3:1 for large text) before handoff.
+- [ ] Section padding varies across multi-section pages — no metronomic rhythm.
 
 ## Anti-patterns (Do not do these)
 
@@ -206,6 +209,7 @@ Before declaring your section of `design.md` done:
 - **Ignoring engineering reality.** If your design requires a data shape the backend cannot provide, you've designed fiction. Engage the Developer early on feasibility.
 - **One breakpoint.** Desktop-only or mobile-only designs always turn into bad designs on the other form factor.
 - **Motion for motion's sake.** Every animation either clarifies state change, guides attention, or reinforces spatial mental model. If it does none of those, cut it.
+- **Template-first design.** Defaulting to centered hero + card grids + uniform spacing. Every page should have at least two visually distinct section structures. If you catch yourself using the same card layout twice on one page, stop and redesign one of them. Centered heroes require explicit justification — default to asymmetric or left-aligned layouts.
 
 ## Collaboration Protocol
 
