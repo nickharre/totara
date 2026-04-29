@@ -94,3 +94,29 @@ Do not edit existing entries. To supersede a lesson, write a new entry that refe
   3. **Quality bar addition:** Add to Dieter's quality bar: "[ ] All text colors verified against their background at WCAG AA (4.5:1 for normal text, 3:1 for large text) before handoff." — Owner: Peter (pending user approval)
   4. **Quality bar addition:** Add to Dieter's quality bar: "[ ] Section padding varies across the page — no metronomic rhythm." — Owner: Peter (pending user approval)
 - **Watch for:** Next marketing or landing page work should produce a non-template layout on the first pass, not the third. Contrast ratios should be verified before the first review, not caught during it.
+
+## 2026-04-28 — Hero visual: code-generated SVG paths look mechanical
+- **Signal:** User: "Those rings look like complete shite"
+- **Diagnosis:** skill gap — Dieter designed a hero visual using hand-plotted SVG path coordinates to simulate organic tree rings. The result looked mechanical and fake — code-generated paths claiming to be organic always betray themselves. The user immediately rejected it and provided their own illustration instead.
+- **Change applied:** Removed the inline SVG paths. Replaced with the user's `TreeRingsHero.svg` as an `<img>` element with the same positioning CSS. The lesson: use real illustrations, not code-generated approximations of organic forms.
+- **Evidence trail:** This conversation session. User's verbatim feedback was unambiguous.
+- **Watch for:** Dieter should never propose code-generated SVG paths as a substitute for real illustration. When a design requires organic/natural visual elements (hand-drawn, botanical, textural), the correct action is to specify the visual requirements and request the user source or commission the asset — not to fake it with coordinates.
+
+## 2026-04-28 — 1:1 Review: UI/UX Designer (Dieter) — Follow-up
+- **Facilitator:** Peter (Talent Manager)
+- **Period reviewed:** Hero visual design (this session, post-overhaul)
+- **Assessment summary:**
+  - Deliverable quality: Needs Improvement — the inline SVG ring paths were rejected immediately
+  - Handoff readiness: Adequate — the positioning CSS and responsive behavior were correct; only the visual content failed
+  - Collaboration: Strong — accepted the rejection without defensiveness, pivoted to using the user's asset cleanly
+  - Scope discipline: Strong — stayed within the brief
+  - Error handling: Strong — quick recovery, swapped to real SVG file with same positioning
+  - Learning & adaptation: Pending — this is the first occurrence of this specific failure mode
+  - Communication clarity: Strong — the design spec was detailed and implementable
+- **Improvement areas:**
+  1. **Code-generated organic illustration.** Dieter proposed 7 hand-plotted SVG paths as "organic tree rings." The paths used manually offset control points to simulate irregularity, but the result was visibly mechanical — the kind of uncanny valley where something tries to look hand-drawn but clearly isn't. Real organic forms have micro-irregularities, grain, and character that cannot be faked with a few cubic bezier curves.
+     - Evidence: User's immediate rejection ("complete shite"). The paths were replaced with the user's own SVG illustration.
+     - Impact: Wasted a design cycle. The user had to source the illustration themselves.
+- **Action plan:**
+  1. **Persona edit:** Add to Dieter's Anti-patterns: "Code-generated organic illustration. Never use hand-plotted SVG coordinates to simulate natural forms (tree rings, hand-drawn lines, botanical elements, textures). Code-generated paths always look mechanical. When a design requires organic visual elements, specify the visual requirements (style, color, size, positioning) and request the user source or commission the asset. Use real illustrations, not approximations." — Owner: Peter (pending user approval)
+- **Watch for:** Next time a design calls for organic/natural visual elements, Dieter should specify what's needed and ask the user to provide the asset, rather than attempting to generate it in code.

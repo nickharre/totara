@@ -18,7 +18,7 @@ Install as a [Kiro Power](https://kiro.dev/docs/powers/):
 2. Paste: `https://github.com/nickharre/totara`
 3. Totara activates when you mention keywords like "requirements," "design," or "triage"
 
-The Kiro version lives in [`power-totara/`](./power-totara/).
+The Kiro version lives at the repo root (`POWER.md` + `steering/`).
 
 ### Claude Code
 
