@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Totara — Spec-Driven Development Team</title>
   <meta name="description" content="Seven AI agents. Structured handoffs. Take features from idea to production with deep-rooted process and disciplined quality gates.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Totara — Spec-Driven Development Team">
+  <meta property="og:description" content="Seven AI agents. Structured handoffs. Take features from idea to production with deep-rooted process and disciplined quality gates.">
+  <meta property="og:image" content="public/TotaraLogoTransparent.png">
+  <meta property="og:url" content="https://nickharre.github.io/totara/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Totara — Spec-Driven Development Team">
+  <meta name="twitter:description" content="Seven AI agents with structured handoffs and quality gates to take features from idea to production.">
+  <meta name="twitter:image" content="public/TotaraLogoTransparent.png">
   <link rel="icon" type="image/png" href="public/TotaraLogoTransparent.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +33,12 @@
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <div class="nav-center" role="list">
-        <a href="#pipeline" role="listitem">Pipeline</a>
-        <a href="#features" role="listitem">Features</a>
-        <a href="#agents" role="listitem">Team</a>
-        <a href="#install" role="listitem">Install</a>
+      <div class="nav-center">
+        <a href="#pipeline">Pipeline</a>
+        <a href="#features">Features</a>
+        <a href="#agents">Team</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/nickharre/totara" class="nav-cta-mobile">GitHub</a>
       </div>
       <a href="https://github.com/nickharre/totara" class="nav-cta">GitHub</a>
     </div>
@@ -54,20 +64,6 @@
         </div>
         <div class="hero-visual reveal reveal-delay-2">
           <img class="hero-ring-art" src="public/TreeRingsDark.svg" alt="Tree rings illustration representing deep-rooted process" width="520" height="520">
-          <div class="hero-stat-cards">
-            <div class="hero-stat hero-stat-1">
-              <div class="hero-stat-num">7</div>
-              <div class="hero-stat-label">Agents</div>
-            </div>
-            <div class="hero-stat hero-stat-2">
-              <div class="hero-stat-num">6</div>
-              <div class="hero-stat-label">Quality Gates</div>
-            </div>
-            <div class="hero-stat hero-stat-3">
-              <div class="hero-stat-num">Continuous</div>
-              <div class="hero-stat-label">Learning</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -106,6 +102,20 @@
         <div class="philosophy-right reveal reveal-delay-1">
           <p class="philosophy-text">Named after the Totara tree &mdash; a native New Zealand podocarp that lives over 1,000 years. Like its namesake, software built with this team is rooted in craft, built to endure.</p>
           <p class="philosophy-text">No half-deliverables pass downstream. Every phase has a fitness gate. Every handoff is verified. Every decision is documented.</p>
+          <div class="philosophy-stats">
+            <div class="philosophy-stat">
+              <span class="philosophy-stat-num">7</span>
+              <span class="philosophy-stat-label">Agents</span>
+            </div>
+            <div class="philosophy-stat">
+              <span class="philosophy-stat-num">6</span>
+              <span class="philosophy-stat-label">Quality Gates</span>
+            </div>
+            <div class="philosophy-stat">
+              <span class="philosophy-stat-num">&infin;</span>
+              <span class="philosophy-stat-label">Learning</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,42 +128,72 @@
         <span class="section-label">The Pipeline</span>
         <h2 class="section-title">Six phases.<br>Zero shortcuts.</h2>
       </div>
-      <div class="pipeline-visual">
-        <div class="pipeline-card reveal" data-step="01">
-          <div class="pipeline-card-num">01</div>
-          <h3 class="pipeline-card-title">Requirements</h3>
-          <p class="pipeline-card-agent">Marty &mdash; Product Manager</p>
-          <p class="pipeline-card-desc">EARS notation. Testable acceptance criteria. Explicit scope boundaries.</p>
+      <div class="pipeline-timeline">
+        <div class="pipeline-step reveal" data-step="01">
+          <div class="pipeline-step-marker">
+            <span class="pipeline-step-num">01</span>
+            <span class="pipeline-step-line"></span>
+          </div>
+          <div class="pipeline-step-content">
+            <h3 class="pipeline-step-title">Requirements</h3>
+            <p class="pipeline-step-agent">Marty &mdash; Product Manager</p>
+            <p class="pipeline-step-desc">EARS notation. Testable acceptance criteria. Explicit scope boundaries.</p>
+          </div>
         </div>
-        <div class="pipeline-card reveal reveal-delay-1" data-step="02">
-          <div class="pipeline-card-num">02</div>
-          <h3 class="pipeline-card-title">UX Design</h3>
-          <p class="pipeline-card-agent">Dieter &mdash; Designer</p>
-          <p class="pipeline-card-desc">Every screen, every state. Default, loading, empty, error, success, partial.</p>
+        <div class="pipeline-step reveal reveal-delay-1" data-step="02">
+          <div class="pipeline-step-marker">
+            <span class="pipeline-step-num">02</span>
+            <span class="pipeline-step-line"></span>
+          </div>
+          <div class="pipeline-step-content">
+            <h3 class="pipeline-step-title">UX Design</h3>
+            <p class="pipeline-step-agent">Dieter &mdash; Designer</p>
+            <p class="pipeline-step-desc">Every screen, every state. Default, loading, empty, error, success, partial.</p>
+          </div>
         </div>
-        <div class="pipeline-card reveal reveal-delay-2" data-step="03">
-          <div class="pipeline-card-num">03</div>
-          <h3 class="pipeline-card-title">Architecture</h3>
-          <p class="pipeline-card-agent">Margaret + Charity</p>
-          <p class="pipeline-card-desc">Components, data model, API surface, cross-cutting concerns, security review.</p>
+        <div class="pipeline-step reveal reveal-delay-1" data-step="03">
+          <div class="pipeline-step-marker">
+            <span class="pipeline-step-num">03</span>
+            <span class="pipeline-step-line"></span>
+          </div>
+          <div class="pipeline-step-content">
+            <h3 class="pipeline-step-title">Architecture</h3>
+            <p class="pipeline-step-agent">Margaret + Charity</p>
+            <p class="pipeline-step-desc">Components, data model, API surface, cross-cutting concerns, security review.</p>
+          </div>
         </div>
-        <div class="pipeline-card reveal reveal-delay-1" data-step="04">
-          <div class="pipeline-card-num">04</div>
-          <h3 class="pipeline-card-title">Implementation</h3>
-          <p class="pipeline-card-agent">Margaret &mdash; Developer</p>
-          <p class="pipeline-card-desc">Boring, correct, maintainable code. Ships software that works when it matters.</p>
+        <div class="pipeline-step reveal reveal-delay-2" data-step="04">
+          <div class="pipeline-step-marker">
+            <span class="pipeline-step-num">04</span>
+            <span class="pipeline-step-line"></span>
+          </div>
+          <div class="pipeline-step-content">
+            <h3 class="pipeline-step-title">Implementation</h3>
+            <p class="pipeline-step-agent">Margaret &mdash; Developer</p>
+            <p class="pipeline-step-desc">Boring, correct, maintainable code. Ships software that works when it matters.</p>
+          </div>
         </div>
-        <div class="pipeline-card reveal reveal-delay-2" data-step="05">
-          <div class="pipeline-card-num">05</div>
-          <h3 class="pipeline-card-title">Testing</h3>
-          <p class="pipeline-card-agent">James &mdash; Tester</p>
-          <p class="pipeline-card-desc">Every AC has a passing test. Every design state exercised. No open Sev1/Sev2.</p>
+        <div class="pipeline-step reveal reveal-delay-2" data-step="05">
+          <div class="pipeline-step-marker">
+            <span class="pipeline-step-num">05</span>
+            <span class="pipeline-step-line"></span>
+          </div>
+          <div class="pipeline-step-content">
+            <h3 class="pipeline-step-title">Testing</h3>
+            <p class="pipeline-step-agent">James &mdash; Tester</p>
+            <p class="pipeline-step-desc">Every AC has a passing test. Every design state exercised. No open Sev1/Sev2.</p>
+          </div>
         </div>
-        <div class="pipeline-card reveal reveal-delay-3" data-step="06">
-          <div class="pipeline-card-num">06</div>
-          <h3 class="pipeline-card-title">Release</h3>
-          <p class="pipeline-card-agent">Joint sign-off</p>
-          <p class="pipeline-card-desc">SLO dashboards live. Alerts tested. Rollback rehearsed. Security scans clean.</p>
+        <div class="pipeline-step reveal reveal-delay-3" data-step="06">
+          <div class="pipeline-step-marker">
+            <span class="pipeline-step-num">06</span>
+            <span class="pipeline-step-line"></span>
+          </div>
+          <div class="pipeline-step-content">
+            <h3 class="pipeline-step-title">Release</h3>
+            <p class="pipeline-step-agent">Joint sign-off</p>
+            <p class="pipeline-step-desc">SLO dashboards live. Alerts tested. Rollback rehearsed. Security scans clean.</p>
+          </div>
         </div>
       </div>
       <div class="pipeline-meta-row reveal">
@@ -409,6 +449,8 @@
     </div>
   </section>
 
+  <div class="sr-only" aria-live="polite" id="copy-status"></div>
+
   </main>
 
   <!-- Footer -->
@@ -421,6 +463,7 @@
             <span>Totara</span>
           </a>
           <p class="footer-tagline">Spec-driven development.<br>Deep-rooted process.</p>
+          <p class="footer-origin">Made in Aotearoa New Zealand</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
@@ -439,7 +482,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>MIT License &middot; Built for teams who craft</p>
+        <p>MIT License &middot; Built for teams who craft &middot; By <a href="https://github.com/nickharre" class="footer-author-link">Nick Harre</a></p>
       </div>
     </div>
   </footer>
@@ -462,6 +505,28 @@
       toggle.addEventListener('click', function() {
         var open = center.classList.toggle('nav-open');
         toggle.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+
+      // Focus trap & Escape for mobile nav
+      document.addEventListener('keydown', function(e) {
+        if (!center.classList.contains('nav-open')) return;
+        if (e.key === 'Escape') {
+          center.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          toggle.focus();
+          return;
+        }
+        if (e.key !== 'Tab') return;
+        var focusable = center.querySelectorAll('a, button');
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
       });
 
       // Reveal on scroll
@@ -514,9 +579,11 @@
           navigator.clipboard.writeText(text).then(function() {
             btn.innerHTML = checkIcon;
             btn.classList.add('copied');
+            document.getElementById('copy-status').textContent = 'Copied to clipboard';
             setTimeout(function() {
               btn.innerHTML = copyIcon;
               btn.classList.remove('copied');
+              document.getElementById('copy-status').textContent = '';
             }, 2000);
           });
         });
@@ -530,21 +597,6 @@
           var y = e.clientY - rect.top;
           card.style.setProperty('--mouse-x', x + 'px');
           card.style.setProperty('--mouse-y', y + 'px');
-        });
-      });
-
-      // Pipeline card hover tilt
-      document.querySelectorAll('.pipeline-card').forEach(function(card) {
-        card.addEventListener('mousemove', function(e) {
-          var rect = card.getBoundingClientRect();
-          var x = (e.clientX - rect.left) / rect.width;
-          var y = (e.clientY - rect.top) / rect.height;
-          var tiltX = (y - 0.5) * 6;
-          var tiltY = (x - 0.5) * -6;
-          card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-4px)';
-        });
-        card.addEventListener('mouseleave', function() {
-          card.style.transform = '';
         });
       });
     })();
