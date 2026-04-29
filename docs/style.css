@@ -116,7 +116,10 @@ body::before {
   letter-spacing: 0.02em;
   color: var(--text);
 }
-.nav-brand img { width: 32px; height: 32px; border-radius: 6px; }
+.nav-brand img { width: 32px; height: 32px; border-radius: 6px; transition: transform 0.6s var(--ease-out); }
+.nav-brand:hover img {
+  transform: rotate(15deg);
+}
 .nav-center { display: flex; gap: 40px; align-items: center; }
 .nav-center a {
   font-size: 13px; font-weight: 400;
@@ -177,6 +180,28 @@ body::before {
   background: radial-gradient(ellipse 80% 60% at 65% 40%, var(--green-glow), transparent 70%),
               radial-gradient(ellipse 50% 40% at 30% 60%, rgba(200, 184, 154, 0.03), transparent 60%);
 }
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    rgba(74, 124, 92, 0.06) 60deg,
+    transparent 120deg,
+    rgba(200, 184, 154, 0.04) 180deg,
+    transparent 240deg,
+    rgba(74, 124, 92, 0.06) 300deg,
+    transparent 360deg
+  );
+  animation: hero-glow 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes hero-glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 .hero-rings-bg {
   position: absolute;
   top: 50%; right: -8%;
@@ -206,6 +231,12 @@ body::before {
   content: '';
   width: 32px; height: 1px;
   background: var(--accent-dim);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-out) 0.2s;
+}
+.hero-eyebrow.visible::before {
+  transform: scaleX(1);
 }
 .hero h1 {
   font-family: var(--font-display);
@@ -237,11 +268,14 @@ body::before {
 .hero-ring-art {
   width: 100%; max-width: 520px;
   opacity: 0.45;
-  animation: float 8s ease-in-out infinite;
+  animation: float 12s ease-in-out infinite;
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(1.5deg); }
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(6px, -10px) rotate(1.2deg); }
+  50%  { transform: translate(-4px, -18px) rotate(-0.8deg); }
+  75%  { transform: translate(3px, -8px) rotate(0.6deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }
 
 /* Buttons */
@@ -293,6 +327,9 @@ body::before {
   width: 3px; height: 3px; border-radius: 50%;
   background: var(--accent-dim);
 }
+.marquee-section:hover .marquee-track {
+  animation-play-state: paused;
+}
 
 /* ─── Section shared ─── */
 .section { padding: clamp(80px, 10vw, 160px) 0; }
@@ -332,7 +369,17 @@ body::before {
 .install-section { padding-top: clamp(80px, 10vw, 140px); padding-bottom: clamp(80px, 10vw, 140px); }
 
 /* ─── Philosophy ─── */
-.philosophy { border-top: 1px solid var(--border); }
+.philosophy {
+  border-top: none;
+  position: relative;
+}
+.philosophy::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 184, 154, 0.15), transparent);
+}
 .philosophy-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -346,6 +393,18 @@ body::before {
   margin-bottom: 24px;
 }
 .philosophy-text:last-of-type { margin-bottom: 0; }
+
+.philosophy-quote {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 26px);
+  line-height: 1.6;
+  color: var(--text);
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 28px;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent-dim);
+}
 
 .philosophy-stats {
   display: flex;
@@ -376,7 +435,17 @@ body::before {
 
 
 /* ─── Pipeline ─── */
-.pipeline-section { border-top: 1px solid var(--border); }
+.pipeline-section {
+  border-top: none;
+  position: relative;
+}
+.pipeline-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 184, 154, 0.15), transparent);
+}
 .pipeline-section .section-header { margin-bottom: 64px; }
 
 /* ─── Pipeline Timeline ─── */
@@ -505,7 +574,11 @@ body::before {
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
-.feature-card:hover { border-color: var(--border-hover); }
+.feature-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--border-hover);
+}
 .feature-card:hover::after { opacity: 1; }
 .feature-card-num {
   font-family: var(--font-mono);
@@ -537,7 +610,7 @@ body::before {
 /* ─── Agents ─── */
 .agents-section {
   border-top: 1px solid var(--border);
-  background: var(--bg-elevated);
+  background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%);
 }
 .agents-header { margin-bottom: 64px; }
 .agents-list {
@@ -643,6 +716,17 @@ body::before {
 .install-tab:hover { border-color: var(--border-hover); }
 .install-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .install-tab.active { border-color: var(--accent-dim); background: var(--bg-card-hover); }
+.install-tab::after {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.3s var(--ease-out);
+  margin-top: 4px;
+}
+.install-tab.active::after {
+  background: var(--accent);
+}
 .install-tab-name { font-size: 15px; font-weight: 500; }
 .install-tab-desc { font-size: 11px; color: var(--text-muted); }
 .install-panel { display: none; }
@@ -761,6 +845,12 @@ body::before {
   font-weight: 300;
 }
 .cta-actions { display: flex; justify-content: center; gap: 16px; }
+.cta-actions .btn-primary svg {
+  transition: transform 0.4s var(--ease-out);
+}
+.cta-actions .btn-primary:hover svg {
+  transform: translateX(4px);
+}
 
 /* ─── Footer ─── */
 footer {
@@ -800,10 +890,11 @@ footer {
 }
 .footer-col a {
   font-size: 14px; color: var(--text-secondary);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.3s var(--ease-out);
   font-weight: 300;
+  display: inline-block;
 }
-.footer-col a:hover { color: var(--text); }
+.footer-col a:hover { color: var(--text); transform: translateX(4px); }
 .footer-bottom {
   border-top: 1px solid var(--border);
   padding-top: 24px;
