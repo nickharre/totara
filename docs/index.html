@@ -3,452 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Totara — Spec-Driven Development Team for Kiro &amp; Claude Code</title>
+  <title>Totara — Spec-Driven Development Team</title>
   <meta name="description" content="Seven AI agents. Structured handoffs. Take features from idea to production with deep-rooted process and disciplined quality gates.">
   <link rel="icon" type="image/png" href="public/TotaraLogoTransparent.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #f5f0e8;
-      --bg-white: #ffffff;
-      --bg-warm: #ece7dd;
-      --text: #1a1a1a;
-      --text-secondary: #4a4a4a;
-      --text-muted: #6a6a6a;
-      --accent: #2d5a3d;
-      --accent-hover: #1e4a2e;
-      --border: #d4cfc5;
-      --border-light: #e5e0d6;
-      --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
-      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { color: var(--text); text-decoration: none; }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-
-    /* Skip link */
-    .skip-link {
-      position: absolute; top: -100px; left: 16px;
-      background: var(--accent); color: var(--bg);
-      padding: 8px 16px; border-radius: 6px;
-      font-size: 14px; font-weight: 600; z-index: 100;
-      transition: top 0.2s ease;
-    }
-    .skip-link:focus { top: 12px; }
-
-    /* ─── Nav ─── */
-    nav {
-      position: sticky; top: 0; z-index: 50;
-      background: var(--accent);
-      padding: 16px 0;
-    }
-    nav .container { display: flex; align-items: center; justify-content: space-between; }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-      width: auto; height: 36px;
-    }
-    .nav-brand img { width: 36px; height: 36px; }
-    .nav-wordmark {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      color: #f5f0e8;
-      letter-spacing: 0.01em;
-    }
-    .nav-right { display: flex; gap: 32px; align-items: center; }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a {
-      color: rgba(245, 240, 232, 0.9); font-size: 14px; font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.15s ease;
-    }
-    .nav-links a:hover { color: #f5f0e8; }
-    .nav-links a:focus-visible { outline: 2px solid #f5f0e8; outline-offset: 3px; }
-    .btn-nav {
-      display: inline-flex; align-items: center;
-      padding: 8px 24px; border-radius: 6px;
-      font-size: 14px; font-weight: 600;
-      background: var(--bg); color: var(--text) !important;
-      transition: background 0.2s ease;
-      letter-spacing: 0.02em;
-    }
-    .btn-nav:hover { background: var(--bg-white); text-decoration: none; }
-
-    /* Hamburger */
-    .nav-toggle {
-      display: none; flex-direction: column; justify-content: center;
-      gap: 5px; background: none; border: none; cursor: pointer;
-      padding: 4px; width: 36px; height: 36px;
-    }
-    .nav-toggle span {
-      display: block; width: 22px; height: 2px;
-      background: #f5f0e8; border-radius: 2px;
-    }
-
-    /* ─── Hero ─── */
-    .hero {
-      position: relative;
-      min-height: 85vh;
-      display: flex; align-items: center;
-      overflow: hidden;
-      padding: 160px 0 120px;
-    }
-    .hero-content {
-      position: relative; z-index: 1;
-      text-align: left;
-      margin-left: 0;
-      margin-right: auto;
-      width: 100%;
-      max-width: 640px;
-    }
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-style: normal;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(40px, 5.5vw, 76px);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    .hero-desc {
-      font-size: 16px; line-height: 1.7;
-      color: var(--text-secondary);
-      margin-bottom: 36px;
-      max-width: 580px;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start; }
-
-    /* Hero rings illustration */
-    .hero-rings {
-      position: absolute;
-      top: 50%;
-      right: -12%;
-      transform: translateY(-50%);
-      width: 55vw;
-      max-width: 750px;
-      min-width: 400px;
-      height: auto;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.7;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; border-radius: 8px;
-      font-size: 15px; font-weight: 600;
-      border: none; cursor: pointer;
-      transition: all 0.2s ease;
-      letter-spacing: 0.01em;
-    }
-    .btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
-    .btn-primary { background: var(--accent); color: var(--bg); }
-    .btn-primary:hover { background: var(--accent-hover); }
-    .btn-secondary {
-      background: transparent; color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-    .btn-secondary:hover { border-color: var(--text); }
-
-    /* ─── Section shared ─── */
-    .section { padding: 100px 0; }
-    .section-border { border-top: 1px solid var(--border); }
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(28px, 3vw, 42px);
-      font-weight: 400; line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .section-subtitle {
-      font-size: 16px; color: var(--text-muted);
-      line-height: 1.6; margin-bottom: 56px;
-      max-width: 520px;
-    }
-    .section-header-center { text-align: center; }
-    .section-header-center .section-subtitle { margin-left: auto; margin-right: auto; }
-
-    /* ─── Pipeline ─── */
-    .pipeline { padding: 80px 0; }
-    .pipeline .section-title { font-size: clamp(24px, 2.5vw, 36px); }
-    .pipeline-steps {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      list-style: none; gap: 0;
-      position: relative;
-    }
-    .pipeline-steps::before {
-      content: '';
-      position: absolute; top: 20px; left: 20px; right: 20px;
-      height: 1px; background: var(--border);
-    }
-    .pipeline-step {
-      display: flex; flex-direction: column; align-items: center;
-      flex: 1; position: relative; text-align: center;
-    }
-    .pipeline-num {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--bg); border: 1.5px solid var(--text);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 14px; font-weight: 600;
-      color: var(--text); margin-bottom: 16px;
-      position: relative; z-index: 1;
-    }
-    .pipeline-label { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-    .pipeline-role { font-size: 13px; color: var(--text-secondary); font-family: var(--font-sans); }
-
-    /* Meta-agent spanning bars */
-    .pipeline-meta {
-      display: flex; gap: 12px; margin-top: 32px;
-    }
-    .pipeline-meta-bar {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-left: 3px solid var(--accent);
-      border-top: none;
-      border-right: none;
-      border-bottom: none;
-      border-radius: 0 8px 8px 0;
-      background: var(--bg-warm);
-      font-size: 14px; font-weight: 500;
-      color: var(--text-secondary);
-      font-family: var(--font-sans);
-    }
-    .pipeline-meta-bar svg { flex-shrink: 0; }
-
-    /* ─── Features ─── */
-    .features { padding: 120px 0; }
-    .features .section-title { font-size: clamp(32px, 4vw, 48px); }
-    .feature-list {
-      display: flex; flex-direction: column; gap: 0;
-      max-width: 800px;
-    }
-    .feature-row {
-      display: flex; gap: 32px; padding: 32px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .feature-row:first-child { padding-top: 0; }
-    .feature-row:last-child { border-bottom: none; }
-    .feature-num {
-      font-family: var(--font-mono); font-size: 13px; font-weight: 600;
-      color: var(--text-muted); flex-shrink: 0; width: 32px; padding-top: 2px;
-    }
-    .feature-body h3 {
-      font-family: var(--font-serif); font-size: 20px; font-weight: 400;
-      margin-bottom: 6px;
-    }
-    .feature-body p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
-
-    /* ─── Agents ─── */
-    .agents { padding: 80px 0; background: var(--bg-warm); }
-    .agent-roster { max-width: 800px; }
-    .agent-row {
-      display: flex; gap: 24px; padding: 20px 0;
-      border-bottom: 1px solid var(--border-light);
-      align-items: baseline;
-    }
-    .agent-row:last-child { border-bottom: none; }
-    .agent-row-name {
-      flex-shrink: 0; width: 200px;
-    }
-    .agent-row-name h3 {
-      font-family: var(--font-serif); font-size: 18px; font-weight: 400; margin: 0;
-    }
-    .agent-row-name .agent-row-alias {
-      font-family: var(--font-mono); font-size: 13px; color: var(--accent); margin-top: 2px;
-    }
-    .agent-row-desc {
-      font-size: 15px; color: var(--text-secondary); line-height: 1.6; flex: 1;
-    }
-
-    /* ─── Install ─── */
-    .install { padding: 100px 0; }
-    .platform-tabs {
-      display: flex; gap: 12px;
-      max-width: 680px; margin: 0 auto 24px;
-    }
-    .platform-tab {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      gap: 2px; padding: 16px 20px;
-      background: var(--bg-white); border: 1.5px solid var(--border-light);
-      border-radius: 12px; cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: var(--font-sans);
-    }
-    .platform-tab:hover { border-color: var(--border); }
-    .platform-tab:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
-    .platform-tab.active { border-color: var(--text); background: var(--bg-white); }
-    .platform-tab-name { font-size: 16px; font-weight: 600; color: var(--text); }
-    .platform-tab-desc { font-size: 12px; color: var(--text-muted); font-family: var(--font-sans); }
-    .platform-panel { display: none; }
-    .platform-panel.active { display: block; }
-    .install-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 48px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .install-steps { display: flex; flex-direction: column; gap: 32px; }
-    .install-step { display: flex; gap: 20px; }
-    .step-num {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--text); color: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 14px; font-weight: 600;
-      flex-shrink: 0;
-    }
-    .step-content h3 {
-      font-family: var(--font-serif);
-      font-size: 17px; font-weight: 400; margin-bottom: 6px;
-    }
-    .step-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-    .code-block {
-      background: #eae5db;
-      border: 1px solid var(--border-light);
-      border-radius: 10px; padding: 16px 20px;
-      font-family: var(--font-mono); font-size: 13px;
-      color: var(--text-secondary); margin-top: 12px;
-      overflow-x: auto; white-space: pre-wrap; word-break: break-all;
-      position: relative;
-    }
-    .code-copy {
-      position: absolute; top: 8px; right: 8px;
-      background: var(--bg); border: 1px solid var(--border-light);
-      border-radius: 4px; padding: 4px 8px;
-      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
-      color: var(--text-muted); cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .code-copy:hover { color: var(--text); border-color: var(--border); }
-
-    /* ─── Utility ─── */
-    .step-hint { margin-top: 8px; font-size: 13px; color: var(--text-muted); }
-
-    /* ─── CTA ─── */
-    .cta {
-      padding: 80px 0;
-      text-align: center;
-      background: var(--accent);
-    }
-    .cta .section-title { color: #f5f0e8; margin-bottom: 12px; }
-    .cta p { font-size: 17px; color: rgba(245, 240, 232, 0.8); margin-bottom: 36px; }
-    .cta .btn-primary { background: #f5f0e8; color: var(--accent); }
-    .cta .btn-primary:hover { background: #ffffff; }
-
-    /* ─── Footer ─── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-      text-align: center;
-      font-size: 13px; color: var(--text-muted);
-    }
-    footer a { color: var(--text-secondary); }
-    footer a:hover { color: var(--text); }
-
-    /* ─── Responsive ─── */
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .hero {
-        flex-direction: column; align-items: flex-start;
-        min-height: auto; padding: 60px 0 40px;
-        overflow: visible;
-      }
-      .hero-content { max-width: 100%; }
-      .hero-rings {
-        position: relative;
-        top: auto; right: auto;
-        transform: none;
-        width: 70vw;
-        max-width: 350px;
-        min-width: unset;
-        margin: 40px auto 0;
-        opacity: 0.5;
-      }
-      .pipeline-steps {
-        flex-direction: column; align-items: stretch; gap: 20px;
-      }
-      .pipeline-steps::before {
-        top: 0; bottom: 0; left: 20px; right: auto;
-        width: 1px; height: auto;
-      }
-      .pipeline-step {
-        flex-direction: row; align-items: center;
-        text-align: left; gap: 16px;
-      }
-      .pipeline-num { margin-bottom: 0; flex-shrink: 0; }
-      .pipeline-meta { flex-direction: column; }
-      .agent-row { flex-direction: column; gap: 4px; }
-      .agent-row-name { width: auto; }
-      .feature-row { flex-direction: column; gap: 8px; }
-      .feature-num { width: auto; }
-      .section { padding: 64px 0; }
-      .nav-toggle { display: flex; }
-      .nav-right {
-        display: none;
-        position: absolute; top: 100%; left: 0; right: 0;
-        flex-direction: column; gap: 0;
-        background: var(--accent);
-        border-bottom: 1px solid rgba(245,240,232,0.15);
-        padding: 12px 20px 20px;
-      }
-      .nav-right .nav-links { flex-direction: column; gap: 0; }
-      .nav-right .nav-links a { padding: 12px 0; }
-      .nav-right .btn-nav { margin-top: 12px; text-align: center; justify-content: center; }
-      .nav-right.nav-open { display: flex; }
-      .install-card { padding: 28px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <nav aria-label="Main navigation">
+  <!-- Nav -->
+  <nav class="nav" aria-label="Main navigation">
     <div class="container">
       <a href="#" class="nav-brand" aria-label="Totara home">
-        <img src="public/TotaraLogoTransparent.png" alt="" width="36" height="36">
-        <span class="nav-wordmark">Totara</span>
+        <img src="public/TotaraLogoTransparent.png" alt="" width="32" height="32">
+        <span>Totara</span>
       </a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="#pipeline">Pipeline</a>
-          <a href="#features">Features</a>
-          <a href="#agents">Agents</a>
-          <a href="#install">Install</a>
-        </div>
-        <a href="https://github.com/nickharre/totara" class="btn-nav">Github</a>
+      <div class="nav-center" role="list">
+        <a href="#pipeline" role="listitem">Pipeline</a>
+        <a href="#features" role="listitem">Features</a>
+        <a href="#agents" role="listitem">Team</a>
+        <a href="#install" role="listitem">Install</a>
       </div>
+      <a href="https://github.com/nickharre/totara" class="nav-cta">GitHub</a>
     </div>
   </nav>
 
@@ -456,330 +38,459 @@
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-bg">
+      <img class="hero-rings-bg" src="public/TreeRingsHero.svg" alt="" aria-hidden="true" width="800" height="800">
+    </div>
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Build to last</div>
-        <h1>Rooted in craft,<br>built to endure</h1>
-        <p class="hero-desc">Seven AI agents. Structured handoffs. Quality gates at every phase. Totara turns your AI coding assistant into a full development team — deep-rooted process, durable output, software built to last.</p>
-        <div class="hero-actions">
-          <a href="#install" class="btn btn-primary">Get Totara</a>
-          <a href="https://github.com/nickharre/totara" class="btn btn-secondary">View on GitHub</a>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-eyebrow reveal">Spec-driven development</div>
+          <h1 class="reveal reveal-delay-1">Rooted in<br><em>craft</em>, built<br>to endure</h1>
+          <p class="hero-desc reveal reveal-delay-2">Seven AI agents with structured handoffs and quality gates at every phase. Totara turns your coding assistant into a full development team.</p>
+          <div class="hero-actions reveal reveal-delay-3">
+            <a href="#install" class="btn btn-primary">Get Started</a>
+            <a href="https://github.com/nickharre/totara" class="btn btn-secondary">View Source</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-delay-2">
+          <img class="hero-ring-art" src="public/TreeRingsHero.svg" alt="Tree rings illustration representing deep-rooted process" width="520" height="520">
+          <div class="hero-stat-cards">
+            <div class="hero-stat hero-stat-1">
+              <div class="hero-stat-num">7</div>
+              <div class="hero-stat-label">Agents</div>
+            </div>
+            <div class="hero-stat hero-stat-2">
+              <div class="hero-stat-num">6</div>
+              <div class="hero-stat-label">Quality Gates</div>
+            </div>
+            <div class="hero-stat hero-stat-3">
+              <div class="hero-stat-num">&infin;</div>
+              <div class="hero-stat-label">Learning</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Tree rings illustration -->
-    <img class="hero-rings" src="public/TreeRingsHero.svg" alt="" aria-hidden="true" width="800" height="800">
+  <!-- Marquee -->
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Requirements</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>UX Design</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Architecture</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Implementation</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Testing</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Release</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Kiro Power</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Claude Code</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Requirements</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>UX Design</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Architecture</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Implementation</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Testing</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Release</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Kiro Power</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Claude Code</span>
+    </div>
+  </div>
+
+  <!-- Philosophy -->
+  <section class="section philosophy" id="philosophy">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="philosophy-left reveal">
+          <span class="section-label">Philosophy</span>
+          <h2 class="section-title">Software that<br>ships <em>right</em></h2>
+        </div>
+        <div class="philosophy-right reveal reveal-delay-1">
+          <p class="philosophy-text">Named after the Totara tree &mdash; a native New Zealand podocarp that lives over 1,000 years. Like its namesake, software built with this team is rooted in craft, built to endure.</p>
+          <p class="philosophy-text">No half-deliverables pass downstream. Every phase has a fitness gate. Every handoff is verified. Every decision is documented.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Pipeline -->
-  <section class="section section-border pipeline" id="pipeline">
+  <section class="section pipeline-section" id="pipeline">
     <div class="container">
-      <div>
-        <h2 class="section-title">The Pipeline</h2>
+      <div class="section-header reveal">
+        <span class="section-label">The Pipeline</span>
+        <h2 class="section-title">Six phases.<br>Zero shortcuts.</h2>
       </div>
-      <ol class="pipeline-steps" role="list">
-        <li class="pipeline-step">
-          <div class="pipeline-num">1</div>
-          <div>
-            <div class="pipeline-label">Requirements</div>
-            <div class="pipeline-role">Marty (PM)</div>
-          </div>
-        </li>
-        <li class="pipeline-step">
-          <div class="pipeline-num">2</div>
-          <div>
-            <div class="pipeline-label">UX Design</div>
-            <div class="pipeline-role">Dieter (Designer)</div>
-          </div>
-        </li>
-        <li class="pipeline-step">
-          <div class="pipeline-num">3</div>
-          <div>
-            <div class="pipeline-label">Architecture</div>
-            <div class="pipeline-role">Margaret + Charity</div>
-          </div>
-        </li>
-        <li class="pipeline-step">
-          <div class="pipeline-num">4</div>
-          <div>
-            <div class="pipeline-label">Implementation</div>
-            <div class="pipeline-role">Margaret (Dev)</div>
-          </div>
-        </li>
-        <li class="pipeline-step">
-          <div class="pipeline-num">5</div>
-          <div>
-            <div class="pipeline-label">Testing</div>
-            <div class="pipeline-role">James (QA)</div>
-          </div>
-        </li>
-        <li class="pipeline-step">
-          <div class="pipeline-num">6</div>
-          <div>
-            <div class="pipeline-label">Release</div>
-            <div class="pipeline-role">Joint sign-off</div>
-          </div>
-        </li>
-      </ol>
-
-      <!-- Meta-agents spanning the full pipeline -->
-      <div class="pipeline-meta" aria-label="Meta-agents that span all phases">
-        <div class="pipeline-meta-bar">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Gene — Delivery Lead · gates every handoff
+      <div class="pipeline-visual">
+        <div class="pipeline-card reveal" data-step="01">
+          <div class="pipeline-card-num">01</div>
+          <h3 class="pipeline-card-title">Requirements</h3>
+          <p class="pipeline-card-agent">Marty &mdash; Product Manager</p>
+          <p class="pipeline-card-desc">EARS notation. Testable acceptance criteria. Explicit scope boundaries.</p>
         </div>
-        <div class="pipeline-meta-bar">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Peter — Talent Manager · audits capability gaps
+        <div class="pipeline-card reveal reveal-delay-1" data-step="02">
+          <div class="pipeline-card-num">02</div>
+          <h3 class="pipeline-card-title">UX Design</h3>
+          <p class="pipeline-card-agent">Dieter &mdash; Designer</p>
+          <p class="pipeline-card-desc">Every screen, every state. Default, loading, empty, error, success, partial.</p>
+        </div>
+        <div class="pipeline-card reveal reveal-delay-2" data-step="03">
+          <div class="pipeline-card-num">03</div>
+          <h3 class="pipeline-card-title">Architecture</h3>
+          <p class="pipeline-card-agent">Margaret + Charity</p>
+          <p class="pipeline-card-desc">Components, data model, API surface, cross-cutting concerns, security review.</p>
+        </div>
+        <div class="pipeline-card reveal reveal-delay-1" data-step="04">
+          <div class="pipeline-card-num">04</div>
+          <h3 class="pipeline-card-title">Implementation</h3>
+          <p class="pipeline-card-agent">Margaret &mdash; Developer</p>
+          <p class="pipeline-card-desc">Boring, correct, maintainable code. Ships software that works when it matters.</p>
+        </div>
+        <div class="pipeline-card reveal reveal-delay-2" data-step="05">
+          <div class="pipeline-card-num">05</div>
+          <h3 class="pipeline-card-title">Testing</h3>
+          <p class="pipeline-card-agent">James &mdash; Tester</p>
+          <p class="pipeline-card-desc">Every AC has a passing test. Every design state exercised. No open Sev1/Sev2.</p>
+        </div>
+        <div class="pipeline-card reveal reveal-delay-3" data-step="06">
+          <div class="pipeline-card-num">06</div>
+          <h3 class="pipeline-card-title">Release</h3>
+          <p class="pipeline-card-agent">Joint sign-off</p>
+          <p class="pipeline-card-desc">SLO dashboards live. Alerts tested. Rollback rehearsed. Security scans clean.</p>
+        </div>
+      </div>
+      <div class="pipeline-meta-row reveal">
+        <div class="pipeline-meta-card">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span><strong>Gene</strong> &mdash; Delivery Lead &middot; gates every handoff</span>
+        </div>
+        <div class="pipeline-meta-card">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span><strong>Peter</strong> &mdash; Talent Manager &middot; audits capability gaps</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section class="section section-border features" id="features">
+  <section class="section features-section" id="features">
     <div class="container">
-      <div>
-        <h2 class="section-title">What You Get</h2>
+      <div class="features-header reveal">
+        <span class="section-label">Capabilities</span>
+        <h2 class="section-title">What you get</h2>
       </div>
-      <div class="feature-list">
-        <div class="feature-row">
-          <span class="feature-num">01</span>
-          <div class="feature-body">
-            <h3>Structured Handoffs</h3>
-            <p>Every phase has a fitness gate. No half-deliverables pass downstream. The Delivery Lead verifies each transition.</p>
-          </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-card-num">01</div>
+          <h3>Structured Handoffs</h3>
+          <p>Every phase has a fitness gate. No half-deliverables pass downstream. The Delivery Lead verifies each transition with specific criteria.</p>
         </div>
-        <div class="feature-row">
-          <span class="feature-num">02</span>
-          <div class="feature-body">
-            <h3>Issue Triage</h3>
-            <p>Bugs get routed by root cause, not symptom. A comprehensive taxonomy maps every issue type to the right owner.</p>
-          </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-card-num">02</div>
+          <h3>Issue Triage</h3>
+          <p>Bugs get routed by root cause, not symptom. A comprehensive taxonomy maps every issue type to the right owner with clear accountability.</p>
         </div>
-        <div class="feature-row">
-          <span class="feature-num">03</span>
-          <div class="feature-body">
-            <h3>Living Documentation</h3>
-            <p>A product-level living spec aggregates shipped features. Tech debt is tracked in a register. Nothing hides.</p>
-          </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-card-num">03</div>
+          <h3>Living Documentation</h3>
+          <p>A product-level living spec aggregates shipped features. Tech debt is tracked in a register. Nothing hides in TODO comments.</p>
         </div>
-        <div class="feature-row">
-          <span class="feature-num">04</span>
-          <div class="feature-body">
-            <h3>Quality Gates</h3>
-            <p>Each agent has a quality bar. The Tester and DevOps jointly own the release gate. No shortcuts to production.</p>
-          </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-card-num">04</div>
+          <h3>Quality Gates</h3>
+          <p>Each agent has a quality bar. The Tester and DevOps jointly own the release gate. No shortcuts to production, ever.</p>
         </div>
-        <div class="feature-row">
-          <span class="feature-num">05</span>
-          <div class="feature-body">
-            <h3>Capability Audits</h3>
-            <p>Before implementation starts, the Talent Manager checks if the team has the skills the spec demands.</p>
-          </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-card-num">05</div>
+          <h3>Capability Audits</h3>
+          <p>Before implementation starts, the Talent Manager checks if the team has the skills the spec demands. Gaps get filled proactively.</p>
         </div>
-        <div class="feature-row">
-          <span class="feature-num">06</span>
-          <div class="feature-body">
-            <h3>Continuous Learning</h3>
-            <p>User feedback and recurring issues become permanent team improvements — persona edits, skill docs, convention updates.</p>
-          </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-card-num">06</div>
+          <h3>Continuous Learning</h3>
+          <p>User feedback and recurring issues become permanent team improvements &mdash; persona edits, skill docs, convention updates.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Agents -->
-  <section class="section agents" id="agents">
+  <section class="section agents-section" id="agents">
     <div class="container">
-      <div>
-        <h2 class="section-title">Meet the Team</h2>
-        <p class="section-subtitle" style="color: var(--text-secondary);">Each agent is named after a pioneer in their field, with deep expertise and strong opinions.</p>
+      <div class="agents-header reveal">
+        <span class="section-label">The Team</span>
+        <h2 class="section-title">Seven agents.<br>Named after <em>pioneers</em>.</h2>
+        <p class="section-desc">Each agent carries deep expertise and strong opinions about their craft. They collaborate through structured handoffs, not chaos.</p>
       </div>
-      <div class="agent-roster">
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>Product Manager</h3>
-            <div class="agent-row-alias">Marty</div>
+      <div class="agents-list">
+        <div class="agent-card reveal" data-agent="pm">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">Marty</span>
+              <span class="agent-type">Core</span>
+            </div>
+            <h3 class="agent-role">Product Manager</h3>
+            <p class="agent-desc">Owns the &ldquo;what&rdquo; and &ldquo;why.&rdquo; Produces requirements in EARS notation with testable acceptance criteria.</p>
           </div>
-          <p class="agent-row-desc">Owns the "what" and "why." Produces requirements in EARS notation with testable acceptance criteria.</p>
         </div>
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>UI/UX Designer</h3>
-            <div class="agent-row-alias">Dieter</div>
+        <div class="agent-card reveal reveal-delay-1" data-agent="designer">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">Dieter</span>
+              <span class="agent-type">Core</span>
+            </div>
+            <h3 class="agent-role">UI/UX Designer</h3>
+            <p class="agent-desc">Owns user flows, interaction design, visual design, and accessibility. Designs all states &mdash; not just the happy path.</p>
           </div>
-          <p class="agent-row-desc">Owns user flows, interaction design, visual design, and accessibility. Designs all states — not just the happy path.</p>
         </div>
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>Fullstack Developer</h3>
-            <div class="agent-row-alias">Margaret</div>
+        <div class="agent-card reveal reveal-delay-2" data-agent="dev">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">Margaret</span>
+              <span class="agent-type">Core</span>
+            </div>
+            <h3 class="agent-role">Fullstack Developer</h3>
+            <p class="agent-desc">Stack-agnostic. Writes boring, correct, maintainable code. Ships software that works when it matters most.</p>
           </div>
-          <p class="agent-row-desc">Stack-agnostic. Writes boring, correct, maintainable code. Ships software that works when it matters most.</p>
         </div>
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>DevOps Engineer</h3>
-            <div class="agent-row-alias">Charity</div>
+        <div class="agent-card reveal" data-agent="devops">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">Charity</span>
+              <span class="agent-type">Core</span>
+            </div>
+            <h3 class="agent-role">DevOps Engineer</h3>
+            <p class="agent-desc">Cloud-agnostic. Owns infrastructure, CI/CD, observability, security, reliability, and cost.</p>
           </div>
-          <p class="agent-row-desc">Cloud-agnostic. Owns infrastructure, CI/CD, observability, security, reliability, and cost.</p>
         </div>
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>Tester</h3>
-            <div class="agent-row-alias">James</div>
+        <div class="agent-card reveal reveal-delay-1" data-agent="tester">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">James</span>
+              <span class="agent-type">Core</span>
+            </div>
+            <h3 class="agent-role">Tester</h3>
+            <p class="agent-desc">Owns test strategy, automation, exploratory testing, and release validation. The last line of defense.</p>
           </div>
-          <p class="agent-row-desc">Owns test strategy, automation, exploratory testing, and release validation. The last line of defense.</p>
         </div>
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>Delivery Lead</h3>
-            <div class="agent-row-alias">Gene</div>
+        <div class="agent-card reveal reveal-delay-2" data-agent="delivery">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">Gene</span>
+              <span class="agent-type">Meta</span>
+            </div>
+            <h3 class="agent-role">Delivery Lead</h3>
+            <p class="agent-desc">Drives handoffs, gates each phase, triages issues to the right role. Calm orchestration under pressure.</p>
           </div>
-          <p class="agent-row-desc">Meta-agent. Drives handoffs, gates each phase, triages issues to the right role. Calm orchestration under pressure.</p>
         </div>
-        <div class="agent-row">
-          <div class="agent-row-name">
-            <h3>Talent Manager</h3>
-            <div class="agent-row-alias">Peter</div>
+        <div class="agent-card reveal reveal-delay-3" data-agent="talent">
+          <div class="agent-card-inner">
+            <div class="agent-card-top">
+              <span class="agent-alias">Peter</span>
+              <span class="agent-type">Meta</span>
+            </div>
+            <h3 class="agent-role">Talent Manager</h3>
+            <p class="agent-desc">Audits team capability against specs, fills gaps with skill docs, and turns feedback into permanent improvements.</p>
           </div>
-          <p class="agent-row-desc">Meta-agent. Audits team capability against specs, fills gaps with skill docs, and turns feedback into permanent improvements.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Install -->
-  <section class="section section-border install" id="install">
+  <section class="section install-section" id="install">
     <div class="container">
-      <div>
-        <h2 class="section-title">Get Started</h2>
+      <div class="install-header reveal">
+        <span class="section-label">Get Started</span>
+        <h2 class="section-title">Two platforms.<br>Same <em>team</em>.</h2>
       </div>
 
-      <!-- Platform tabs -->
-      <div class="platform-tabs" role="tablist" aria-label="Installation platform">
-        <button class="platform-tab active" data-platform="kiro" role="tab" aria-selected="true" aria-controls="panel-kiro" id="tab-kiro">
-          <span class="platform-tab-name">Kiro</span>
-          <span class="platform-tab-desc">Power</span>
+      <div class="install-tabs" role="tablist" aria-label="Installation platform">
+        <button class="install-tab active" data-platform="kiro" role="tab" aria-selected="true" aria-controls="panel-kiro" id="tab-kiro">
+          <span class="install-tab-name">Kiro</span>
+          <span class="install-tab-desc">Power</span>
         </button>
-        <button class="platform-tab" data-platform="claude" role="tab" aria-selected="false" aria-controls="panel-claude" id="tab-claude">
-          <span class="platform-tab-name">Claude Code</span>
-          <span class="platform-tab-desc">CLAUDE.md + Agents</span>
+        <button class="install-tab" data-platform="claude" role="tab" aria-selected="false" aria-controls="panel-claude" id="tab-claude">
+          <span class="install-tab-name">Claude Code</span>
+          <span class="install-tab-desc">CLAUDE.md</span>
         </button>
       </div>
 
-      <!-- Kiro instructions -->
-      <div class="install-card platform-panel active" id="panel-kiro" role="tabpanel" aria-labelledby="tab-kiro">
-        <div class="install-steps">
-          <div class="install-step">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <h3>Install from GitHub</h3>
-              <p>Open Kiro → Powers panel → "Add power from GitHub" → paste:</p>
-              <div class="code-block">https://github.com/nickharre/totara</div>
-              <p class="step-hint">Kiro will find the <code>power-totara/</code> folder automatically.</p>
+      <!-- Kiro panel -->
+      <div class="install-panel active" id="panel-kiro" role="tabpanel" aria-labelledby="tab-kiro">
+        <div class="install-card reveal">
+          <div class="install-steps">
+            <div class="install-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h3>Install from GitHub</h3>
+                <p>Open Kiro &rarr; Powers panel &rarr; &ldquo;Add power from GitHub&rdquo;</p>
+                <div class="code-block">
+                  <code>https://github.com/nickharre/totara</code>
+                  <button class="code-copy" aria-label="Copy to clipboard" data-copy="https://github.com/nickharre/totara"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="install-step">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <h3>Or install locally</h3>
-              <p>Clone the repo, then point Kiro at the Power folder inside it:</p>
-              <div class="code-block">git clone https://github.com/nickharre/totara.git</div>
-              <p class="step-hint">Then: Kiro → Powers → "Add power from Local Path" → select the <code>totara/power-totara/</code> folder.</p>
+            <div class="install-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h3>Or clone locally</h3>
+                <p>Clone the repo, then point Kiro at the Power folder:</p>
+                <div class="code-block">
+                  <code>git clone https://github.com/nickharre/totara.git</code>
+                  <button class="code-copy" aria-label="Copy to clipboard" data-copy="git clone https://github.com/nickharre/totara.git"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                </div>
+                <p class="step-hint">Then: Kiro &rarr; Powers &rarr; &ldquo;Add power from Local Path&rdquo;</p>
+              </div>
             </div>
-          </div>
-          <div class="install-step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <h3>Start building</h3>
-              <p>Mention keywords like "requirements," "design," or "triage" and Totara activates. Or invoke agents directly with @Marty, @Dieter, @Margaret, etc.</p>
+            <div class="install-step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h3>Start building</h3>
+                <p>Mention keywords like &ldquo;requirements,&rdquo; &ldquo;design,&rdquo; or &ldquo;triage&rdquo; and Totara activates. Or invoke agents directly.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Claude Code instructions -->
-      <div class="install-card platform-panel" id="panel-claude" role="tabpanel" aria-labelledby="tab-claude">
-        <div class="install-steps">
-          <div class="install-step">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <h3>Clone the repo</h3>
-              <div class="code-block">git clone https://github.com/nickharre/totara.git</div>
+      <!-- Claude Code panel -->
+      <div class="install-panel" id="panel-claude" role="tabpanel" aria-labelledby="tab-claude">
+        <div class="install-card reveal">
+          <div class="install-steps">
+            <div class="install-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h3>Clone the repo</h3>
+                <div class="code-block">
+                  <code>git clone https://github.com/nickharre/totara.git</code>
+                  <button class="code-copy" aria-label="Copy to clipboard" data-copy="git clone https://github.com/nickharre/totara.git"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="install-step">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <h3>Copy the Claude config into your project</h3>
-              <p>Copy the <code>.claude</code> folder from inside <code>claude-code/</code>:</p>
-              <div class="code-block">cp -r totara/claude-code/.claude your-project/.claude</div>
+            <div class="install-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h3>Copy the config</h3>
+                <p>Copy the <code>.claude</code> folder into your project:</p>
+                <div class="code-block">
+                  <code>cp -r totara/claude-code/.claude your-project/.claude</code>
+                  <button class="code-copy" aria-label="Copy to clipboard" data-copy="cp -r totara/claude-code/.claude your-project/.claude"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="install-step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <h3>Start a session</h3>
-              <p>Open Claude Code in your project. The <code>CLAUDE.md</code> loads automatically. Invoke roles with "act as Gene" or "act as Marty."</p>
-              <div class="code-block">claude
-# "Act as Gene and kick off a new feature"</div>
+            <div class="install-step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h3>Start a session</h3>
+                <p>Open Claude Code. The CLAUDE.md loads automatically. Invoke roles with &ldquo;act as Gene&rdquo; or &ldquo;act as Marty.&rdquo;</p>
+                <div class="code-block">
+                  <code>claude<br># "Act as Gene and kick off a new feature"</code>
+                  <button class="code-copy" aria-label="Copy to clipboard" data-copy='claude&#10;# "Act as Gene and kick off a new feature"'><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  <section class="section cta-section">
     <div class="container">
-      <h2 class="section-title">Ready to plant roots?</h2>
-      <p>Works with Kiro and Claude Code. Same team, same quality.</p>
-      <a href="https://github.com/nickharre/totara" class="btn btn-primary">Get Totara on GitHub</a>
+      <div class="cta-content reveal">
+        <h2 class="cta-title">Ready to plant roots?</h2>
+        <p class="cta-desc">Open source. Free to use. Built for teams who craft.</p>
+        <div class="cta-actions">
+          <a href="https://github.com/nickharre/totara" class="btn btn-primary">
+            Get Totara on GitHub
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>Totara — open source, free to use, built for teams who craft. Available as a <a href="https://kiro.dev/docs/powers/">Kiro Power</a> and for <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>.</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-brand" aria-label="Totara home">
+            <img src="public/TotaraLogoTransparent.png" alt="" width="28" height="28">
+            <span>Totara</span>
+          </a>
+          <p class="footer-tagline">Spec-driven development.<br>Deep-rooted process.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#pipeline">Pipeline</a>
+            <a href="#features">Features</a>
+            <a href="#agents">Team</a>
+            <a href="#install">Install</a>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="https://github.com/nickharre/totara">GitHub</a>
+            <a href="https://kiro.dev/docs/powers/">Kiro Powers</a>
+            <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>MIT License &middot; Built for teams who craft</p>
+      </div>
     </div>
   </footer>
 
   <script>
     (function() {
-      // Hamburger menu
-      var btn = document.querySelector('.nav-toggle');
-      var links = document.querySelector('.nav-right');
-      btn.addEventListener('click', function() {
-        var open = links.classList.toggle('nav-open');
-        btn.setAttribute('aria-expanded', open);
+      // Nav scroll
+      var nav = document.querySelector('.nav');
+      var lastScroll = 0;
+      window.addEventListener('scroll', function() {
+        var y = window.scrollY;
+        if (y > 60) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+        lastScroll = y;
+      }, { passive: true });
+
+      // Hamburger
+      var toggle = document.querySelector('.nav-toggle');
+      var center = document.querySelector('.nav-center');
+      toggle.addEventListener('click', function() {
+        var open = center.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', open);
       });
 
-      // Platform tabs
-      var tabs = document.querySelectorAll('.platform-tab');
-      tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          activateTab(tab);
+      // Reveal on scroll
+      var reveals = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) { observer.observe(el); });
+
+      // Platform tabs
+      var tabs = document.querySelectorAll('.install-tab');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() { activateTab(tab); });
         tab.addEventListener('keydown', function(e) {
-          var tabArr = Array.from(tabs);
-          var idx = tabArr.indexOf(tab);
+          var arr = Array.from(tabs);
+          var idx = arr.indexOf(tab);
           if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
             e.preventDefault();
-            var next = tabArr[(idx + 1) % tabArr.length];
-            activateTab(next);
-            next.focus();
+            var next = arr[(idx + 1) % arr.length];
+            activateTab(next); next.focus();
           } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
             e.preventDefault();
-            var prev = tabArr[(idx - 1 + tabArr.length) % tabArr.length];
-            activateTab(prev);
-            prev.focus();
+            var prev = arr[(idx - 1 + arr.length) % arr.length];
+            activateTab(prev); prev.focus();
           }
         });
       });
@@ -787,33 +498,56 @@
         tabs.forEach(function(t) {
           t.classList.remove('active');
           t.setAttribute('aria-selected', 'false');
-          t.setAttribute('tabindex', '-1');
         });
         tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
-        tab.setAttribute('tabindex', '0');
-        document.querySelectorAll('.platform-panel').forEach(function(p) {
-          p.classList.remove('active');
-        });
+        document.querySelectorAll('.install-panel').forEach(function(p) { p.classList.remove('active'); });
         document.getElementById('panel-' + tab.dataset.platform).classList.add('active');
       }
 
-      // Copy buttons on code blocks
-      document.querySelectorAll('.code-block').forEach(function(block) {
-        var btn = document.createElement('button');
-        btn.className = 'code-copy';
-        btn.textContent = 'Copy';
-        btn.setAttribute('aria-label', 'Copy to clipboard');
+      // Copy buttons
+      var copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      var checkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+      document.querySelectorAll('.code-copy').forEach(function(btn) {
         btn.addEventListener('click', function() {
-          navigator.clipboard.writeText(block.textContent.replace('Copy', '').trim()).then(function() {
-            btn.textContent = 'Copied';
-            setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+          var text = btn.getAttribute('data-copy');
+          navigator.clipboard.writeText(text).then(function() {
+            btn.innerHTML = checkIcon;
+            btn.classList.add('copied');
+            setTimeout(function() {
+              btn.innerHTML = copyIcon;
+              btn.classList.remove('copied');
+            }, 2000);
           });
         });
-        block.appendChild(btn);
+      });
+
+      // Smooth cursor glow on cards
+      document.querySelectorAll('.agent-card, .feature-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          var rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', x + 'px');
+          card.style.setProperty('--mouse-y', y + 'px');
+        });
+      });
+
+      // Pipeline card hover tilt
+      document.querySelectorAll('.pipeline-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          var rect = card.getBoundingClientRect();
+          var x = (e.clientX - rect.left) / rect.width;
+          var y = (e.clientY - rect.top) / rect.height;
+          var tiltX = (y - 0.5) * 6;
+          var tiltY = (x - 0.5) * -6;
+          card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = '';
+        });
       });
     })();
   </script>
-
 </body>
 </html>
