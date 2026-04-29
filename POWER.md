@@ -48,7 +48,25 @@ Copy the agent files from `steering/agents/` into your workspace at `.kiro/agent
 
 Each agent is invoked manually via `@` mention or by the Delivery Lead during handoffs.
 
-### Step 2: Install convention steering files
+### Step 2: Install skill docs
+
+Copy skill files from `steering/skills/` into your workspace:
+
+**Kiro:**
+```
+.kiro/skills/
+└── web-ui-excellence-skill.md
+```
+
+**Claude Code:**
+```
+.claude/skills/
+└── web-ui-excellence-skill.md
+```
+
+Skills are referenced by agent personas (primarily Dieter, the Designer) and loaded on demand when the task matches.
+
+### Step 3: Install convention steering files
 
 Copy the convention files from `steering/conventions/` into `.kiro/steering/`:
 
@@ -62,7 +80,7 @@ Copy the convention files from `steering/conventions/` into `.kiro/steering/`:
 
 These load automatically and guide all agents on routing, documentation, and debt tracking.
 
-### Step 3: Create the specs directory structure
+### Step 4: Create the specs directory structure
 
 ```
 specs/
@@ -77,7 +95,7 @@ specs/
     └── delivery-log.md
 ```
 
-### Step 4: Add hooks (optional)
+### Step 5: Add hooks (optional)
 
 Add a hook to run the Talent Manager's capability audit before implementation starts:
 

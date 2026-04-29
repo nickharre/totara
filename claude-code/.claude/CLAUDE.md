@@ -73,6 +73,14 @@ specs/
 └── tech-debt-register.md  Debt register
 ```
 
+## Skills
+
+Skill docs live in `.claude/skills/` and encode reusable expertise that agents can reference during their work.
+
+| Skill | Used By | Description |
+|-------|---------|-------------|
+| `web-ui-excellence-skill.md` | Dieter (Designer), Margaret (Developer — for reference) | Awwwards-calibre web UI principles: typography, colour, layout, motion, detail, anti-patterns. Load when producing or reviewing any browser-rendered interface. |
+
 ## Workflows (Load On Demand)
 
 - Starting a new feature → read `.claude/workflows/feature-lifecycle.md`

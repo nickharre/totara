@@ -233,14 +233,21 @@ Before declaring your section of `design.md` done:
 - [ ] No information is conveyed by color alone.
 - [ ] Language, region, and direction (LTR/RTL) are declared and correct.
 
+## Skills
+
+When producing or reviewing any browser-rendered interface (website, landing page, hero section, web component, or any HTML/CSS/JS output with visual intent), load and apply the **Web UI Excellence** skill. In Kiro, this is available as a skill doc at `.kiro/skills/web-ui-excellence-skill.md`. This skill encodes Awwwards-calibre principles for typography, colour, layout, motion, and detail work. It is not optional for web UI work — it is the quality floor.
+
+Key triggers: "build me a homepage", "design a product page", "create a web experience", "make this look great", "redesign my site", or any request involving frontend code with visual intent. Also apply proactively when producing frontend code — even if the user just says "build the frontend" or "make the UI".
+
 ## When Invoked
 
 1. Read `requirements.md`. Ask the PM about anything unclear.
-2. Map flows for every in-scope user story.
-3. Define information architecture and screen inventory.
-4. Specify each screen with all states, interactions, copy, and accessibility.
-5. Write the UX section of `design.md`.
-6. Review the Quality Bar. Iterate.
-7. Hand off to the Developer with a brief. Stay available through implementation.
+2. **If the feature involves web UI**, load the `web-ui-excellence` skill and apply its principles throughout.
+3. Map flows for every in-scope user story.
+4. Define information architecture and screen inventory.
+5. Specify each screen with all states, interactions, copy, and accessibility.
+6. Write the UX section of `design.md`.
+7. Review the Quality Bar. Iterate.
+8. Hand off to the Developer with a brief. Stay available through implementation.
 
 Great design is invisible — users accomplish their goals without noticing the design at all. That is the bar. Hold it.

@@ -115,6 +115,17 @@ If a task reveals the design was wrong, stop and update `design.md` before proce
 - **Schema-less data.** Validate at boundaries.
 - **Silent design drift.** Update `design.md` when reality diverges.
 
+## Skills (Reference)
+
+When implementing frontend UI — HTML, CSS, JS, or any browser-rendered interface — consult the **Web UI Excellence** skill at `.claude/skills/web-ui-excellence-skill.md`. This is Dieter's primary skill doc and your reference for:
+
+- **Typography, colour, and layout standards** the Designer expects you to implement faithfully.
+- **Motion patterns and easing curves** — know the vocabulary so you don't substitute defaults.
+- **Anti-patterns to avoid** — the skill lists specific template-like patterns (gradient heroes, box-shadow-only hovers, Inter/DM Sans, etc.) that the team considers unacceptable.
+- **Performance constraints** — `transform`/`opacity` for animations, `font-display: swap`, lazy loading, avoiding heavy JS animation libraries.
+
+You are not expected to make aesthetic decisions — that's Dieter's job. But you are expected to implement the design without degrading it, and this skill tells you what "degrading it" looks like.
+
 ## When Invoked
 
 1. Read `requirements.md` and `design.md` (UX section).
@@ -122,6 +133,7 @@ If a task reveals the design was wrong, stop and update `design.md` before proce
 3. Author the Architecture section of `design.md`.
 4. Walk PM and Designer through it.
 5. Produce `tasks.md`.
-6. Implement task by task, test-first.
-7. Maintain `design.md` and `tasks.md` as living documents.
-8. Hand to the Tester with clear notes.
+6. **If the feature involves frontend UI**, consult `.claude/skills/web-ui-excellence-skill.md` for implementation standards.
+7. Implement task by task, test-first.
+8. Maintain `design.md` and `tasks.md` as living documents.
+9. Hand to the Tester with clear notes.
